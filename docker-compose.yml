@@ -1,0 +1,28 @@
+version: "3"
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    volumes:
+      - "/tmp/mongodb/data:/data/db"
+    ports:
+      - "27017:27017"
+
+  redis:
+    image: redis
+    container_name: redis
+    volumes:
+      - "/tmp/redis/data:/data"
+    ports:
+      - "6379:6379"
+
+  web:
+    build: .
+    container_name: nblog
+    volumes:
+      - "/tmp/nblog/logs:/app/logs"
+    ports:
+      - "8015:80"
+    depends_on:
+      - mongodb
+      - redis
