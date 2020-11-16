@@ -4,7 +4,7 @@ services:
     image: mongo
     container_name: mongodb
     volumes:
-      - "/tmp/mongodb/data:/data/db"
+      - "/data/mongodb/data:/data/db"
     ports:
       - "27017:27017"
 
@@ -12,7 +12,7 @@ services:
     image: redis
     container_name: redis
     volumes:
-      - "/tmp/redis/data:/data"
+      - "/data/redis/data/:/data"
     ports:
       - "6379:6379"
 
@@ -20,7 +20,7 @@ services:
     build: .
     container_name: nblog
     volumes:
-      - "/tmp/nblog/logs:/app/logs"
+      - "/data/logs/nblog/logs/:/app/logs"
     ports:
       - "8015:80"
     depends_on:
