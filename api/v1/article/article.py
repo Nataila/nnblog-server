@@ -47,7 +47,7 @@ def article_del(id, user: dict = Depends(depends.token_is_true)):
 
 
 @router.get('/article/detail/{id}/')
-def article_detail(id, user: dict = Depends(depends.token_is_true)):
+def article_detail(id):
     data = db.article.find_one({'_id': ObjectId(id)})
     data = json.loads(json_util.dumps(data))
     ctx = {'article': data}
